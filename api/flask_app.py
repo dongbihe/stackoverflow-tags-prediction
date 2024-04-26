@@ -1,5 +1,4 @@
 import os
-import mlflow
 import numpy as np
 import pandas as pd
 from flask import Flask, jsonify
