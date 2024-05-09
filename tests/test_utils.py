@@ -1,5 +1,6 @@
 from api.utils import get_bert_embeddings
 
+
 def test_get_bert_embeddings():
     assert get_bert_embeddings("test").shape[0] == 1
     assert get_bert_embeddings("test").shape[1] == 768
@@ -9,5 +10,5 @@ text = "Make the current Git branch a master branch <p>I have a repository in Gi
 expected_tags = ["git"]
 
 
-#def test_predict_tags():
+# def test_predict_tags():
 #    assert predict_tags(MODEL, get_bert_embeddings(text), TOP_TAGS) == expected_tags
