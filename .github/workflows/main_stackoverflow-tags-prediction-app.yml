@@ -30,7 +30,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      - name: Unit tests
+        run: pytest
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -75,4 +76,6 @@ jobs:
         with:
           app-name: 'stackoverflow-tags-prediction-app'
           slot-name: 'Production'
+          publish-profile: 2BzYjj2GPcJfK3ou9x0Wd7JJmhxXke88b8JbqwKc3xawZpscryAJ9gKumGEj
+
           
