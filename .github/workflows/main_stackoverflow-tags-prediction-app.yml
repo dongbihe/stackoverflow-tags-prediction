@@ -76,6 +76,6 @@ jobs:
         with:
           app-name: 'stackoverflow-tags-prediction-app'
           slot-name: 'Production'
-          publish-profile: '2BzYjj2GPcJfK3ou9x0Wd7JJmhxXke88b8JbqwKc3xawZpscryAJ9gKumGEj'
+          startup-command: 'python main.py'
 
           
