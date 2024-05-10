@@ -58,8 +58,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: Set startup command
-        run: az webapp config set --startup-file "python main.py" --name stackoverflow-app --resource-group stackoverflow-app_group
       
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
