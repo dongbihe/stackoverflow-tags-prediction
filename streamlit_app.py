@@ -12,12 +12,8 @@ if text:
     # print(res)
     if res.status_code == 200:
         res = res.json()
-        # st.write((type(dict(res))))
-        # st.write(pd.DataFrame(dict(res))['tags'].values)
         st.write(pd.DataFrame(dict(res))["tags"].values)
-        # st.write(pd.DataFrame(dict(res))['tags'].values[1])
-        # st.write(res['tags'])
-        # res = pd.read_json(res)
+
     else:
         st.write("Error: Unable to fetch data from the API.")
 else:

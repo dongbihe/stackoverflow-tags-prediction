@@ -10,4 +10,5 @@ def test_index_route():
     assert response.status_code == 200
     assert type(res) is dict
     assert type(res["text"][0]) is str
-    assert type(res["tags"][0]) is list
+    assert type(res["tags"]) is list
+    assert type(res["tags"][0]) is str
