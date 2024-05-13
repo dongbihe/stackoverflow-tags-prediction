@@ -30,7 +30,7 @@ def my_api(text):
     tags_prediction = predict_tags(embeddings)
 
     if len(tags_prediction) == 0:
-        tags_prediction = "No tags suggested"
+        tags_prediction = ["No tags suggested"]
     # data = {"text": [text], "tags": [", ".join(tags_prediction)]}
     data = {"text": [text], "tags": [tags_prediction]}
 
