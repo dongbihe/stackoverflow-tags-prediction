@@ -8,7 +8,7 @@ st.header("Predict Stackoverflow questions tags", anchor=None, help=None)
 text = st.text_input(label="Enter your question:")
 
 if text:
-    res = requests.get("http://127.0.0.1:8000/api/text=" + "".join(text))
+    res = requests.get("http://127.0.0.1:5000/api/text=" + "".join(text))
     # print(res)
     if res.status_code == 200:
         res = res.json()
