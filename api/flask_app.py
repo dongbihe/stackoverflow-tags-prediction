@@ -1,12 +1,17 @@
-import os
-import numpy as np
-import pandas as pd
 from flask import Flask, jsonify
-from joblib import load
 
-from api.preprocessing import clean_text
+from api.utils import get_bert_embeddings, predict_tags
+
 
 app = Flask(__name__)
+
+
+@app.route("/")
+def hello():
+    """
+    Default route to display "Hello World!" message just to test you are good with flask :).
+    """
+    return "Hello World!"
 
 
 @app.route("/api/text=<text>")
@@ -21,10 +26,9 @@ def my_api(text):
         JSON: A JSON object containing the input text and the predicted tags.
     """
 
-    # embeddings = get_bert_embeddings(text)
-    # tags_prediction = predict_tags(loaded_model, embeddings, TOP_TAGS)
-    tags_prediction = ["python", "array"]
-    # tags_prediction = []
+    embeddings = get_bert_embeddings(text)
+    tags_prediction = predict_tags(embeddings)
+
     if len(tags_prediction) == 0:
         tags_prediction = "No tags suggested"
     # data = {"text": [text], "tags": [", ".join(tags_prediction)]}

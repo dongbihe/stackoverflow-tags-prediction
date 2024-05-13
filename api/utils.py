@@ -1,16 +1,19 @@
-import numpy as np
 from sentence_transformers import SentenceTransformer
 
 from api.preprocessing import clean_text
 
 
+from api.static_data import MODEL, TOP_TAGS
+
+
 def get_bert_embeddings(text):
-    model = SentenceTransformer("bert-base-nli-mean-tokens")
-    bert_embeddings = model.encode(clean_text(text))
+    pretrained_model = SentenceTransformer("bert-base-nli-mean-tokens")
+    cleaned_text = clean_text(text)
+    bert_embeddings = pretrained_model.encode(cleaned_text)
     return bert_embeddings.reshape((1, 768))
 
 
-def predict_tags(loaded_model, embeddings, top_tags):
+def predict_tags(embeddings, loaded_model=MODEL, top_tags=TOP_TAGS):
     pred_labels = loaded_model.predict(embeddings)
-    pred_tags = np.array(top_tags)[pred_labels[0] == 1]
-    return pred_tags
+    pred_tags = top_tags[pred_labels[0] == 1]
+    return list(pred_tags)
