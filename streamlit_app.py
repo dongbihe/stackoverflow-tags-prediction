@@ -9,7 +9,6 @@ text = st.text_input(label="Enter your question:")
 
 if text:
     res = requests.get("http://127.0.0.1:5000/api/text=" + text)
-    # print(res)
     if res.status_code == 200:
         res = res.json()
         st.write(pd.DataFrame(dict(res))["tags"].values)
